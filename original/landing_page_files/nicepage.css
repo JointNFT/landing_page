@@ -9045,9 +9045,9 @@ section.u-image,
   flex: 24 0 40%;
 }
 .u-layout-row > .u-size-23 {
-  flex: 0 0 50%;
-  max-width: 50%;
-  min-width: 50%;
+  flex: 0 0 33.33333%;
+  max-width: 33.33333%;
+  min-width: 33.33333%;
 }
 .u-layout-col > .u-size-23 {
   flex: 23 0 38.33333333%;
@@ -9069,9 +9069,9 @@ section.u-image,
   flex: 21 0 35%;
 }
 .u-layout-row > .u-size-20 {
-  flex: 0 0 50%;
-  max-width: 50%;
-  min-width: 50%;
+  flex: 0 0 33.33333%;
+  max-width: 33.33333%;
+  min-width: 33.33333%;
 }
 .u-layout-col > .u-size-20 {
   flex: 20 0 33.33333333%;
