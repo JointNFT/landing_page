@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "pg": "^8.7.3",
+    "shortid": "^2.2.16",
     "vue": "^2.6.11",
     "vue-country-code-select": "^1.6.7",
     "vue-router": "^2.8.1",
