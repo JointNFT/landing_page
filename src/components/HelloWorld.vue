@@ -2,21 +2,22 @@
 <div>
   <v-container>
     <v-card class="mx-auto" max-width="1100" min-height="600" color="#f0f8ff" style="border-radius:50px">
-    <v-row justify="left" class = "pl-12 ml-10 pt-10">
+    <v-row class = "pl-12 ml-10 pt-10">
       <v-card-text style="font-size:2.2em; font-weight: bold;">
         Being early is rewarding
       </v-card-text>
     </v-row>
-    <v-row justify="left" class = "pl-10 ml-10 pt-6">
+    <v-row class = "pl-10 ml-10 pt-6">
       <v-card-text style="font-size:5em; font-weight:bold;">
         Get early access
       </v-card-text>
     </v-row>
-    <v-row justify="left" class = "pl-16 ml-10">
+    <v-row class = "pl-16 ml-10">
       <v-form
         class="pa-0 pt-16"
       >
         <v-text-field
+          v-model="email"
           style="width:400px; border-radius:10px;"
           outlined
           filled
@@ -27,6 +28,7 @@
         ></v-text-field>
 
         <v-text-field
+          v-model="phone"
           style="width:400px; border-radius:10px;"
           outlined
           filled
@@ -45,11 +47,11 @@
         </v-text-field>
       </v-form>
       </v-row>
-      <v-row justify="left" class = "pl-14 ml-10">
+      <v-row class = "pl-14 ml-10">
       <v-card-actions>
         <v-btn
+          @click = "submit"
           style="border-radius:10px; text-transform: none"
-          href="/next"
           x-large
           height="60px"
           width="400"
@@ -69,11 +71,28 @@
 <script>
   export default {
     name: 'HelloWorld',
+    data: () => ({
+        phone: "",
+        email: ""
+    }),
     methods: {
-     onSelect({name, iso2, dialCode}) {
-       console.log(name, iso2, dialCode);
+    submit() {
+      // console.log(this.email, this.phone);
+      // alert("wait");
+      this.$store
+        .dispatch("postEntry", {
+          phone: this.phone,
+          email: this.email
+        })
+        .then(() => {
+          this.$router.push({ path: "/next" });
+        });
+      alert("wait");
+    },
+    onSelect({name, iso2, dialCode}) {
+      console.log(name, iso2, dialCode);
       },
-     }
+    }
   }
 </script>
 
