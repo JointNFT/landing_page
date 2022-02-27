@@ -12,8 +12,9 @@ dotenv.config();
 // create server instance
 const port = process.env.PORT || 3000;
 const app = express();
+// Server settings
 app.use(express.static(path.join(__dirname, "/dist")));
-// bind the request to an absolute path or relative to the CWD
+app.use(express.json());
 
 // Add headers before the routes are defined
 app.use(function (req, res, next) {
@@ -25,10 +26,10 @@ app.use(function (req, res, next) {
 });
 
 async function addToWaitlist(email, phone, referral_code, referrer) {
-  console.log(phone);
+  // check if entry is present in the db
   let query = "select waitlist_spot, referral_code from users.user_signups where email = $1 or phone = $2; ";
   let res = await pool.query(query, [email, phone]);
-  console.log(res.rows);
+
   if (res.rows.length == 0) {
     // user is already in waitlist
     await addNewUser(email, phone, referral_code, referrer);
@@ -52,8 +53,7 @@ const pool = new Pool({
 });
 
 /* New POST route for form submissions */
-app.post("/addToWaitlist", async function (req, res, next) {
-  /* user's email address */
+app.post("/addToWaitlist", async function (req, res) {
   let email = req.body.email;
   let phone = req.body.phone;
 
@@ -62,10 +62,9 @@ app.post("/addToWaitlist", async function (req, res, next) {
 
   /* the referral code a user submitted (might be null) */
   let referrer = req.body.referrer;
-  // if (referrer == "")
-  console.log(phone);
+
   let user_entry = await addToWaitlist(email, phone, referral_code, referrer);
-  console.log(res);
+
   res.send({
     referralCode: user_entry.referral_code,
     waitlist_spot: user_entry.waitlist_spot,
