@@ -7,7 +7,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     phone: "",
-    email: ""
+    email: "",
+    referrer: null
   },
   getters: {
     
@@ -16,18 +17,26 @@ export default new Vuex.Store({
     setEmail(state, email){
       state.email = email;
     },
+    setReferrer(state, referrer){
+      state.referrer = referrer;
+    },
     setPhone(state, phone){
       state.phone = phone;
     }
   },
+  // localhost:8080?referal_code=abcd
   actions: {
-    async postEntry({ commit, state }, { phone, email }) {
+    async postEntry({ commit, state }, { phone, email, referrer }) {
       commit("setEmail", email);
       commit("setPhone", phone);
+      if(referrer)
+      {
+        commit("setReferrer", referrer)
+      }
       axios.post('http://localhost:3000/addToWaitlist', {
         email: state.email,
         phone: state.phone,
-        referrer: "test"
+        referrer: state.referrer
       })
       .then(function (res) {
         console.log(res);
@@ -39,5 +48,3 @@ export default new Vuex.Store({
     },
   },
 });
-
-// Mohammad 9409308782

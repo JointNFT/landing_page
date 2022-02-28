@@ -4,5 +4,6 @@ import nextpage from './components/nextpage';
 
 export default [
     {path: "/", component: landing},
-    {path: "/next", component: nextpage}
+    {path: "/next", component: nextpage},
+    { path: '/code=:id', component: landing }
 ]

@@ -82,12 +82,14 @@
       this.$store
         .dispatch("postEntry", {
           phone: this.phone,
-          email: this.email
+          email: this.email,
+          referrer: this.$route.params.id
         })
         .then(() => {
+          // console.log(this.$route.params.id)
           this.$router.push({ path: "/next" });
         });
-      alert("wait");
+      // alert("wait");
     },
     onSelect({name, iso2, dialCode}) {
       console.log(name, iso2, dialCode);
