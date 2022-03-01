@@ -1,7 +1,7 @@
 <template>
 <div>
   <v-container>
-    <v-card class="mx-auto" max-width="1100" min-height="600" color="#f0f8ff" style="border-radius:50px">
+    <v-card class="mx-auto" max-width="1100" min-height="600"  style="border-radius:50px; background: #F7F7F7">
     <v-row class = "pl-12 ml-10 pt-10">
       <v-card-text style="font-size:2.2em; font-weight: bold;">
         Being early is rewarding

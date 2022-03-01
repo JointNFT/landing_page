@@ -1,8 +1,8 @@
 <template>
-  <v-app>
+  <v-app style="background: #3D3A50">
     <v-app-bar
       app
-      color="primary"
+      color="#1A1C22"
       dark
     >
       <div class="d-flex align-center">
@@ -44,6 +44,7 @@
     </v-main>
   </v-app>
 </template>
+
 
 <script>
 // import HelloWorld from './components/HelloWorld';
