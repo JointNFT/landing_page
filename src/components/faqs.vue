@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <v-card class="mx-auto, info"   style="border-radius:50px; margin-top:5%"  >
+        <v-card class="mx-auto, secondary"   style="border-radius:50px; margin-top:5%"  >
             <v-row class = "pl-12 ml-10 pt-10">
                 <v-card-text style="font-size:2.2em; font-weight: bold;">
                    FAQs
@@ -12,8 +12,8 @@
                    <v-expansion-panels  style="border-radius:25px" >
                        <v-expansion-panel
                           v-for="(item,i) in 5" :key="i">
-                           <v-expansion-panel-header class="secondary">Question</v-expansion-panel-header>
-                           <v-expansion-panel-content class="secondary">
+                           <v-expansion-panel-header class="plain">Question</v-expansion-panel-header>
+                           <v-expansion-panel-content class="plain">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                            </v-expansion-panel-content>
                        </v-expansion-panel>
