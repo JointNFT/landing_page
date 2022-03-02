@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     phone: "",
     email: "",
-    referrer: null
+    referrer: null,
+    questions:[],
   },
   getters: {
     
@@ -22,10 +23,17 @@ export default new Vuex.Store({
     },
     setPhone(state, phone){
       state.phone = phone;
-    }
+    },
+    setQuestions(state, questions){
+      state.questions = questions
+    },
   },
   // localhost:8080?referal_code=abcd
   actions: {
+    async getQuestions({commit}){
+      var questions = ["question1" ,"question2", "question3"];
+      commit("setQuestions",questions);
+    },
     async postEntry({ commit, state }, { phone, email, referrer }) {
       commit("setEmail", email);
       commit("setPhone", phone);

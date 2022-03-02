@@ -3,12 +3,12 @@
   <v-container>
     <v-card class="mx-auto" max-width="1100" min-height="600"  style="border-radius:50px; background: #F7F7F7">
     <v-row class = "pl-12 ml-10 pt-10">
-      <v-card-text style="font-size:2.2em; font-weight: bold;">
+      <v-card-text style="font-size:2.2em; font-weight: bold; color:primary; " >
         Being early is rewarding
       </v-card-text>
     </v-row>
     <v-row class = "pl-10 ml-10 pt-6">
-      <v-card-text style="font-size:5em; font-weight:bold;">
+      <v-card-text style="font-size:5em; font-weight:bold; color:primary;">
         Get early access
       </v-card-text>
     </v-row>
@@ -18,10 +18,10 @@
       >
         <v-text-field
           v-model="email"
-          style="width:400px; border-radius:10px;"
+          style="width:400px; border-radius:10px; "
           outlined
           filled
-          color="deep-purple"
+          color="accent"
           label="Email address"
           solo
           type="email"
@@ -32,7 +32,7 @@
           style="width:400px; border-radius:10px;"
           outlined
           filled
-          color="deep-purple"
+          color="accent"
           label="Phone number"
           solo
         >
@@ -56,7 +56,7 @@
           height="60px"
           width="400"
           class="white--text"
-          color="black accent-4"
+          color="accent"
           depressed
         >
           Continue
@@ -71,11 +71,15 @@
 <script>
   export default {
     name: 'HelloWorld',
+    
     data: () => ({
         phone: "",
         email: ""
     }),
     methods: {
+    getQuestions(){
+      return this.$store.dispatch("getQuestions")
+    },
     submit() {
       // console.log(this.email, this.phone);
       // alert("wait");
