@@ -33,17 +33,13 @@ export default new Vuex.Store({
       {
         commit("setReferrer", referrer)
       }
-      axios.post('/addToWaitlist', {
+      var res = await axios.post('/addToWaitlist', {
         email: state.email,
         phone: state.phone,
         referrer: state.referrer
-      })
-      .then(function (res) {
-        console.log(res);
-      })
-      .catch(function (error) {
-        console.log(error);
       });
+      console.log(res);
+      return res;
       // console.log(state.email, state.phone);
     },
   },

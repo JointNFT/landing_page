@@ -83,11 +83,11 @@
         .dispatch("postEntry", {
           phone: this.phone,
           email: this.email,
-          referrer: this.$route.params.id
+          referrer: this.$route.query.referrer
         })
-        .then(() => {
+        .then((res) => {
           // console.log(this.$route.params.id)
-          this.$router.push({ path: "/next" });
+          this.$router.push({ path: "/next?waitlist_spot="+res.data.waitlist_spot+"&referral_code="+res.data.referralCode });
         });
       // alert("wait");
     },

@@ -32,7 +32,7 @@ async function addToWaitlist(email, phone, referral_code, referrer) {
   if (res.rows.length == 0) {
     // user is already in waitlist
     await addNewUser(email, phone, referral_code, referrer);
-    res = await pool.query(query, [email]);
+    res = await pool.query(query, [email, phone]);
   }
   return res.rows[0];
 }
@@ -65,7 +65,7 @@ app.post("/addToWaitlist", async function (req, res) {
   let user_entry = await addToWaitlist(email, phone, referral_code, referrer);
 
   res.send({
-    referralCode: user_entry.referral_code,
+    referral_code: user_entry.referral_code,
     waitlist_spot: user_entry.waitlist_spot,
   });
 });
