@@ -5,7 +5,6 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const { Pool } = require("pg");
 const dotenv = require("dotenv");
-const Web3 = require("web3");
 const shortid = require("shortid");
 dotenv.config();
 
