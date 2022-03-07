@@ -117,14 +117,16 @@ const sendOtp = async (phone, otp) => {
 async function addNewUser(email, phone, referral_code, referrer, otp) {
 	try {
 		/* add user to the database with INSERT */
-		let query = 'call add_waitlist_entry ($1 , $2, $3, $4, $5) ;';
+		let query = 'call add_waitlist_entry ($1 , $2, $3, $4) ;';
+		let query2 =
+			'update users.user_signups set otp = $1 where email = $2 or phone = $3;';
 		let insert_order = await pool.query(query, [
 			email,
 			phone,
 			referral_code,
 			referrer,
-			otp,
 		]);
+		let add_otp = await pool.query(query2, [otp, email, phone]);
 	} catch (e) {
 		console.log(e);
 	}
